@@ -4,3 +4,13 @@
     padding: 2rem;
     text-align: center;
 }
+table {
+    color: palevioletred;
+    border-collapse: collapse;
+    border: 1px solid whitesmoke;
+}
+th,
+td {
+    border-collapse: collapse;
+    border: 1px solid whitesmoke;
+}
