@@ -20,12 +20,38 @@ function App() {
     //     { id: 11, name: 'Christopher', age: 100 },
     // ]);
 
-    const [count, setCount] = useState(0);
-    function onClickHandler() {
-        setCount(count + 1);
+    // const [count, setCount] = useState(0);
+    // function onClickHandler() {
+    //     setCount(count + 1);
+    // }
+    // function onClickReset() {
+    //     setCount(0);
+    // }
+    const defaultMonet = [
+        { banknote: 'dollar', nominal: 100, number: ' a1234567890' },
+        { banknote: 'dollar', nominal: 50, number: ' z1234567890' },
+        { banknote: 'ruble', nominal: 100, number: ' w1234567890' },
+        { banknote: 'dollar', nominal: 100, number: ' e1234567890' },
+        { banknote: 'dollar', nominal: 50, number: ' c1234567890' },
+        { banknote: 'ruble', nominal: 100, number: ' r1234567890' },
+        { banknote: 'dollar', nominal: 50, number: ' x1234567890' },
+        { banknote: 'ruble', nominal: 50, number: ' v1234567890' },
+    ];
+    const [money, setMoney] = useState(defaultMonet);
+
+    type filterMoneyPropsType = {
+        value: string;
+    };
+
+    function filterMoney({ value }: filterMoneyPropsType) {
+        setMoney(
+            money.filter((element) => {
+                return element.banknote === value;
+            })
+        );
     }
-    function onClickReset() {
-        setCount(0);
+    function reset() {
+        setMoney(defaultMonet);
     }
 
     return (
@@ -35,11 +61,28 @@ function App() {
             <Body title={'Привет Боди'} />
             <Footer title={'Привет футер'} /> 
             <NewComponent students={students} />*/}
-            <h1>{count}</h1>
+            {/* <h1>{count}</h1>
             <button onClick={onClickHandler}>
                 Прибавить <b>1</b>
             </button>
-            <button onClick={onClickReset}>Обнулить</button>
+            <button onClick={onClickReset}>Обнулить</button> */}
+            <ul>
+                {money.map((elemen, index) => {
+                    return (
+                        <li key={index + 1}>
+                            {elemen.banknote} {elemen.nominal} {elemen.number}
+                        </li>
+                    );
+                })}
+            </ul>
+            <button onClick={reset}>reset</button>
+
+            <button onClick={() => filterMoney({ value: 'dollar' })}>
+                dollar
+            </button>
+            <button onClick={() => filterMoney({ value: 'ruble' })}>
+                ruble
+            </button>
         </>
     );
 }
