@@ -3,7 +3,8 @@ import './App.css';
 // import Body from './site/Body';
 // import Footer from './site/Footer';
 // import NewComponent from './NewComponent';
-import { useState } from 'react';
+//import { useState } from 'react';
+import Button from './site/Button';
 
 function App() {
     // const [students, setStudents] = useState([
@@ -27,31 +28,58 @@ function App() {
     // function onClickReset() {
     //     setCount(0);
     // }
-    const defaultMonet = [
-        { banknote: 'dollar', nominal: 100, number: ' a1234567890' },
-        { banknote: 'dollar', nominal: 50, number: ' z1234567890' },
-        { banknote: 'ruble', nominal: 100, number: ' w1234567890' },
-        { banknote: 'dollar', nominal: 100, number: ' e1234567890' },
-        { banknote: 'dollar', nominal: 50, number: ' c1234567890' },
-        { banknote: 'ruble', nominal: 100, number: ' r1234567890' },
-        { banknote: 'dollar', nominal: 50, number: ' x1234567890' },
-        { banknote: 'ruble', nominal: 50, number: ' v1234567890' },
-    ];
-    const [money, setMoney] = useState(defaultMonet);
+    // const defaultMonet = [
+    //     { banknote: 'dollar', nominal: 100, number: ' a1234567890' },
+    //     { banknote: 'dollar', nominal: 50, number: ' z1234567890' },
+    //     { banknote: 'ruble', nominal: 100, number: ' w1234567890' },
+    //     { banknote: 'dollar', nominal: 100, number: ' e1234567890' },
+    //     { banknote: 'dollar', nominal: 50, number: ' c1234567890' },
+    //     { banknote: 'ruble', nominal: 100, number: ' r1234567890' },
+    //     { banknote: 'dollar', nominal: 50, number: ' x1234567890' },
+    //     { banknote: 'ruble', nominal: 50, number: ' v1234567890' },
+    // ];
+    // const [money, setMoney] = useState(defaultMonet);
 
-    type filterMoneyPropsType = {
-        value: string;
-    };
+    // type filterMoneyPropsType = {
+    //     value: string;
+    // };
 
-    function filterMoney({ value }: filterMoneyPropsType) {
-        setMoney(
-            money.filter((element) => {
-                return element.banknote === value;
-            })
-        );
+    // function filterMoney({ value }: filterMoneyPropsType) {
+    //     setMoney(
+    //         money.filter((element) => {
+    //             return element.banknote === value;
+    //         })
+    //     );
+    // }
+    // function reset() {
+    //     setMoney(defaultMonet);
+    // }
+
+    // function myFirstSubscriber() {
+    //     console.log('hello я Вася');
+    // }
+    // function mySecondSubscriber() {
+    //     console.log('hello я Иван');
+    // }
+
+    // function onClickHandler(name: string) {
+    //     console.log(name);
+    // }
+
+    // function foo1() {
+    //     console.log('100200');
+    // }
+    // function foo2(num: number) {
+    //     console.log(num);
+    // }
+    function buttonFoo1(name: string, age: number, adres: string) {
+        console.log(name, age, adres);
     }
-    function reset() {
-        setMoney(defaultMonet);
+    function buttonFoo2(name: string, age: number) {
+        console.log(name, age);
+    }
+    function stupidButton() {
+        console.log('Я тупая кнопка');
     }
 
     return (
@@ -66,11 +94,12 @@ function App() {
                 Прибавить <b>1</b>
             </button>
             <button onClick={onClickReset}>Обнулить</button> */}
-            <ul>
-                {money.map((elemen, index) => {
+            {/* <ul>
+                {money.map((element, index) => {
                     return (
                         <li key={index + 1}>
-                            {elemen.banknote} {elemen.nominal} {elemen.number}
+                            {element.banknote} {element.nominal}{' '}
+                            {element.number}
                         </li>
                     );
                 })}
@@ -82,7 +111,54 @@ function App() {
             </button>
             <button onClick={() => filterMoney({ value: 'ruble' })}>
                 ruble
+            </button> */}
+            {/* <button
+                onClick={() => {
+                    console.log('hello');
+                }}
+            >
+                MyYouTubeChanel
             </button>
+            <button onClick={myFirstSubscriber}>MyYouTubeChanel-1</button>
+            <button onClick={mySecondSubscriber}>MyYouTubeChanel-2</button>
+            <button
+                onClick={() => {
+                    onClickHandler('Вася');
+                }}
+            >
+                MyYouTubeChanel- Вася
+            </button>
+            <div>
+                <button onClick={foo1}>1</button>
+            </div>
+            <div>
+                <button
+                    onClick={() => {
+                        foo2(100200);
+                    }}
+                >
+                    2
+                </button>
+            </div> */}
+            <div>
+                <Button
+                    name={'Универсальная кнопка №1'}
+                    callBack={() => {
+                        buttonFoo1('Васян!', 21, 'Живу в Камбоджи');
+                    }}
+                />
+            </div>
+            <div>
+                <Button
+                    name={'Универсальная кнопка №2'}
+                    callBack={() => {
+                        buttonFoo2('Ивааан!', 35);
+                    }}
+                />
+            </div>
+            <div>
+                <Button name={'Тупая кнопка'} callBack={stupidButton} />
+            </div>
         </>
     );
 }
