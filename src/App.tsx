@@ -4,7 +4,8 @@ import './App.css';
 // import Footer from './site/Footer';
 // import NewComponent from './NewComponent';
 import { useState } from 'react';
-import FullInput from './site/FullInput';
+//import FullInput from './site/FullInput';
+import Input from './site/Input';
 //import Button from './site/Button';
 
 function App() {
@@ -173,7 +174,8 @@ function App() {
                 <Button name={'Тупая кнопка'} callBack={stupidButton} />
             </div> */}
             <div>
-                <FullInput callBack={addMessage} />
+                {/* <FullInput callBack={addMessage} /> */}
+                <Input addMessage={addMessage} />
             </div>
             {message.map((el, index) => {
                 return <div key={index}>{el.message}</div>;
