@@ -3,8 +3,9 @@ import './App.css';
 // import Body from './site/Body';
 // import Footer from './site/Footer';
 // import NewComponent from './NewComponent';
-//import { useState } from 'react';
-import Button from './site/Button';
+import { useState } from 'react';
+import FullInput from './site/FullInput';
+//import Button from './site/Button';
 
 function App() {
     // const [students, setStudents] = useState([
@@ -72,14 +73,26 @@ function App() {
     // function foo2(num: number) {
     //     console.log(num);
     // }
-    function buttonFoo1(name: string, age: number, adres: string) {
-        console.log(name, age, adres);
-    }
-    function buttonFoo2(name: string, age: number) {
-        console.log(name, age);
-    }
-    function stupidButton() {
-        console.log('Я тупая кнопка');
+    // function buttonFoo1(name: string, age: number, adres: string) {
+    //     console.log(name, age, adres);
+    // }
+    // function buttonFoo2(name: string, age: number) {
+    //     console.log(name, age);
+    // }
+    // function stupidButton() {
+    //     console.log('Я тупая кнопка');
+    // }
+
+    const [message, setMessage] = useState([
+        { message: 'message1' },
+        { message: 'message2' },
+        { message: 'message3' },
+        { message: 'message4' },
+        { message: 'message5' },
+    ]);
+    function addMessage(input: string) {
+        const newMessage = { message: input };
+        setMessage([newMessage, ...message]);
     }
 
     return (
@@ -140,7 +153,7 @@ function App() {
                     2
                 </button>
             </div> */}
-            <div>
+            {/* <div>
                 <Button
                     name={'Универсальная кнопка №1'}
                     callBack={() => {
@@ -158,7 +171,13 @@ function App() {
             </div>
             <div>
                 <Button name={'Тупая кнопка'} callBack={stupidButton} />
+            </div> */}
+            <div>
+                <FullInput callBack={addMessage} />
             </div>
+            {message.map((el, index) => {
+                return <div key={index}>{el.message}</div>;
+            })}
         </>
     );
 }
